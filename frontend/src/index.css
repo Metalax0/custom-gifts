@@ -11,15 +11,24 @@ body {
     margin: 0;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    transition: all 0.3s ease-in-out;
+}
+
 /* Default Light Theme */
 :root {
-    --primary-color: #302ae6;
-    --secondary-color: #536390;
-    --font-color: #424242;
-    --heading-color: #292922;
+    --font-color-primary: white;
+    --font-color-secondary: rgb(204, 204, 204);
+
+    --active-color-primary: #53da4e;
 
     --bg-color-primary: #9a97f3;
     --bg-color-secondary: #f39797;
+
+    --hover-color-primary: #f39797;
+    --hover-color-secondary: #e5f397;
 }
 
 /* Customizing Dark Theme */
@@ -29,13 +38,6 @@ body {
     --font-color: #e1e1ff;
     --bg-color: #161625;
     --heading-color: #818cab;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    transition: all 0.3s ease-in-out;
-    /* outline: 5px solid red; */
 }
 
 /*  */
