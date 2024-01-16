@@ -3,5 +3,5 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #9a97f3;
+    background-color: var(--bg-color-primary);
 }

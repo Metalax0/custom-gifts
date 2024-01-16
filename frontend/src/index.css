@@ -16,8 +16,10 @@ body {
     --primary-color: #302ae6;
     --secondary-color: #536390;
     --font-color: #424242;
-    --bg-color: #fff;
     --heading-color: #292922;
+
+    --bg-color-primary: #9a97f3;
+    --bg-color-secondary: #f39797;
 }
 
 /* Customizing Dark Theme */
