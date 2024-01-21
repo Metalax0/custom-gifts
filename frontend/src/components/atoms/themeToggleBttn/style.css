@@ -1,0 +1,13 @@
+.theme-toggle-bttn {
+    border: none;
+    color: var(--fg-color);
+    background-color: transparent;
+}
+
+.theme-toggle-bttn:hover {
+    cursor: pointer;
+
+    filter: drop-shadow(var(--hover-color) 0px 20px 0px)
+        drop-shadow(var(--hover-color) 0px 20px 1px)
+        drop-shadow(var(--hover-color) 0px 20px 2px);
+}

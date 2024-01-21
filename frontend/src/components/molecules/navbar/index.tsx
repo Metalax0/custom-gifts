@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import "./style.css";
+import { ThemeToggleBttn } from "../../atoms/themeToggleBttn";
 
 export const Navbar = () => {
     return (
@@ -51,16 +52,19 @@ export const Navbar = () => {
                     </NavLink>
                 </li>
             </ul>
-            <NavLink
-                to="/login"
-                className={({ isActive }) => (isActive ? "" : "inactive")}
-            >
-                <img
-                    className="navbar-account-icon"
-                    src="images/user-icon.png"
-                    alt="store logo"
-                />
-            </NavLink>
+            <div className="navbar-secondary-wrapper">
+                <ThemeToggleBttn />
+                <NavLink
+                    to="/login"
+                    className={({ isActive }) => (isActive ? "" : "inactive")}
+                >
+                    <img
+                        className="navbar-account-icon"
+                        src="images/user-icon.png"
+                        alt="store logo"
+                    />
+                </NavLink>
+            </div>
         </div>
     );
 };

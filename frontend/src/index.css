@@ -19,25 +19,20 @@ body {
 
 /* Default Light Theme */
 :root {
-    --font-color-primary: white;
-    --font-color-secondary: rgb(204, 204, 204);
+    --bg-color: #ffa68d;
+    --fg-color: #1c1c1c;
 
-    --active-color-primary: #53da4e;
-
-    --bg-color-primary: #9a97f3;
-    --bg-color-secondary: #f39797;
-
-    --hover-color-primary: #f39797;
-    --hover-color-secondary: #e5f397;
+    --active-color: #58b958;
+    --hover-color: #58b958;
 }
 
 /* Customizing Dark Theme */
 [theme="dark"] {
-    --primary-color: #9a97f3;
-    --secondary-color: #818cab;
-    --font-color: #e1e1ff;
-    --bg-color: #161625;
-    --heading-color: #818cab;
+    --bg-color: #1c1c1c;
+    --fg-color: #ffa68d;
+
+    --active-color: #22a52d;
+    --hover-color: #8dff97;
 }
 
 /*  */
