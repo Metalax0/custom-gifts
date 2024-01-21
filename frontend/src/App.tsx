@@ -1,18 +1,13 @@
 import "./App.css";
-import { useEffect } from "react";
-import { Landing } from "./pages/landing";
+import { Landing } from "./components/pages/landing";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Login } from "./pages/login";
-import { Error } from "./pages/error";
+import { Login } from "./components/pages/login";
+import { Error } from "./components/pages/error";
 import { Layout } from "./components/layout";
 
 function App() {
-    useEffect(() => {
-        // document.querySelector("html")!.setAttribute("theme", "light");
-        document.querySelector("html")!.setAttribute("theme", "dark");
-    }, []);
     return (
-        <div className="App">
+        <div className="app">
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Layout />}>
