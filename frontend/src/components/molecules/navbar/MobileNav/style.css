@@ -1,0 +1,88 @@
+/* Dropdown Button */
+.dropbtn {
+    display: flex;
+    background-color: var(--fg-color);
+    padding: 5px;
+    border: none;
+    font-size: 2rem;
+    color: var(--bg-color);
+}
+
+.mobile-nav {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    border-radius: 15px;
+    right: 0px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    position: absolute;
+    background-color: var(--bg-color);
+    height: 270px;
+    width: 150px;
+    box-shadow: 0px 0px 20px var(--fg-color);
+    z-index: 1;
+}
+
+.dropdown-content ul {
+    font-size: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    list-style-type: none;
+}
+
+.mobile-nav svg:hover {
+    cursor: pointer;
+}
+
+/* Show the dropdown menu on hover */
+.mobile-nav:hover .dropdown-content {
+    cursor: pointer;
+    display: flex;
+}
+
+.dropdown-content li:hover {
+    cursor: pointer;
+    color: var(--active-color);
+    transform: scale(1.3);
+    letter-spacing: 3px;
+    font-weight: bold;
+}
+
+.navbar-account-icon {
+    width: 45px;
+    background-color: var(--hover-color);
+    border-radius: 100%;
+}
+
+.active {
+    color: var(--fg-color);
+    text-decoration: none;
+    filter: drop-shadow(var(--active-color) 0px 5px 5px)
+        drop-shadow(var(--active-color) -0px -5px 5px)
+        drop-shadow(var(--active-color) 5px 0px 5px)
+        drop-shadow(var(--active-color) -5px 0px 5px);
+}
+
+/* Prevents drop shadow from stacking (before hover, one is already applied */
+.active:hover {
+    filter: none;
+}
+
+.inactive {
+    color: var(--fg-color);
+    text-decoration: none;
+}
+
+.navbar-account-icon:hover {
+    cursor: pointer;
+    filter: contrast(200%) hue-rotate(90deg);
+}
