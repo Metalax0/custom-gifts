@@ -1,7 +1,6 @@
-from urllib import response
+
 from django.shortcuts import render
 from accounts.models import User
-from django.http import HttpResponse
 from rest_framework.response import Response
 from .serializers import SellerUserSerializer,CustomerUserSerializer,UserLoginSerializer,MeSerializer
 from rest_framework.permissions import IsAuthenticated,AllowAny
