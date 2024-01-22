@@ -1,5 +1,120 @@
+from urllib import response
 from django.shortcuts import render
+from accounts.models import User
 from django.http import HttpResponse
+from rest_framework.response import Response
+from .serializers import SellerUserSerializer,CustomerUserSerializer,UserLoginSerializer,MeSerializer
+from rest_framework.permissions import IsAuthenticated,AllowAny
+from rest_framework.views import APIView
+from rest_framework import status,serializers
+from django.contrib.auth import authenticate
+from rest_framework_simplejwt.tokens import RefreshToken
+
 # Create your views here.
-def hello(response):
-    return HttpResponse('hello world')
+
+# REGISTER USER
+class SellerRegisterView(APIView):
+    permission_classes = (AllowAny,)
+    serializer_class=SellerUserSerializer
+    def post (self, request, *args, **kwargs):
+        try:
+            serializer=self.serializer_class(data=request.data)
+
+            if serializer.is_valid(raise_exception=True):
+                user=serializer.save()
+
+                # Generate JWT tokens
+                refresh = RefreshToken.for_user(user)
+                access_token = str(refresh.access_token)
+                refresh_token = str(refresh)
+
+                return Response({
+                    'msg':"seller registration success",
+                    'access_token': access_token,
+                    'refresh_token': refresh_token
+                    },status=status.HTTP_201_CREATED)
+
+        except serializers.ValidationError as e:
+            print(e.detail)
+            return Response({'msg': 'Validation error', 'errors': e.detail}, status=status.HTTP_400_BAD_REQUEST)
+        except Exception as e:
+            return Response({'msg': 'Something went wrong', 'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+class CustomerRegisterView(APIView):
+    permission_classes = (AllowAny,)
+    serializer_class=CustomerUserSerializer
+    def post (self, request, *args, **kwargs):
+        try:
+            serializer=self.serializer_class(data=request.data)
+
+            if serializer.is_valid(raise_exception=True):
+                user=serializer.save()
+                # Generate JWT tokens
+                refresh = RefreshToken.for_user(user)
+                access_token = str(refresh.access_token)
+                refresh_token = str(refresh)
+
+                return Response({
+                    'msg':"customer registration success",
+                    'access_token': access_token,
+                    'refresh_token': refresh_token
+                    },status=status.HTTP_201_CREATED)
+
+        except serializers.ValidationError as e:
+            print(e.detail)
+            return Response({'msg': 'Validation error', 'errors': e.detail}, status=status.HTTP_400_BAD_REQUEST)
+        except Exception as e:
+            return Response({'msg': 'Something went wrong', 'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+class UserLoginView(APIView):
+    permission_classes = (AllowAny,)
+    serializer_class=UserLoginSerializer
+    def post (self,request):
+        try:
+            serializer=UserLoginSerializer(data=request.data)
+
+            if serializer.is_valid(raise_exception=True):
+                email=serializer.validated_data.get('email')
+                password=serializer.validated_data.get('password')
+
+                user=authenticate(email=email,password=password)
+                if user is not None:
+
+                    # Generate JWT tokens
+                    refresh = RefreshToken.for_user(user)
+                    access_token = str(refresh.access_token)
+                    refresh_token = str(refresh)
+
+                    return Response({
+                        'msg':"login success",
+                        'access_token': access_token,
+                        'refresh_token': refresh_token
+                        },status=status.HTTP_200_OK)
+                else:
+                    return Response({'msg': 'User Not Found'}, status=status.HTTP_401_UNAUTHORIZED)
+                
+        except serializers.ValidationError as e:
+            print(e.detail)
+            return Response({'msg': 'Validation error', 'errors': e.detail}, status=status.HTTP_400_BAD_REQUEST)
+        except Exception as e:
+            return Response({'msg': 'Something went wrong', 'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+
+class Me(APIView):
+    permission_classes = (IsAuthenticated,)
+    def get(self,request,*args,**kwargs):
+        user = request.user
+        serializer=MeSerializer(user)
+
+        #TOKENS
+        refresh = RefreshToken.for_user(user)
+        access_token = str(refresh.access_token)
+        refresh_token = str(refresh)
+
+        return Response({
+            'me':serializer.data
+            # 'access token':access_token,
+            # 'refresh_token':refresh_token
+            },
+            status=status.HTTP_200_OK)
+
