@@ -1,0 +1,78 @@
+.navbar-items {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5vw;
+
+    list-style-type: none;
+
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    letter-spacing: 5px;
+}
+
+.navbar-items li:hover {
+    cursor: pointer;
+    filter: drop-shadow(var(--hover-color) 0px 15px 0px)
+        drop-shadow(var(--hover-color) 0px 15px 1px)
+        drop-shadow(var(--hover-color) 0px 15px 2px);
+}
+
+.navbar-account-icon {
+    width: 45px;
+    background-color: var(--hover-color);
+    border-radius: 100%;
+}
+
+.active {
+    color: var(--fg-color);
+    text-decoration: none;
+    filter: drop-shadow(var(--active-color) 0px 10px 5px)
+        drop-shadow(var(--active-color) -0px -10px 5px)
+        drop-shadow(var(--active-color) 15px 0px 5px)
+        drop-shadow(var(--active-color) -15px 0px 5px);
+}
+
+/* Prevents drop shadow from stacking (before hover, one is already applied */
+.active:hover {
+    filter: none;
+}
+
+.inactive {
+    color: var(--fg-color);
+    text-decoration: none;
+}
+
+.navbar-account-icon:hover {
+    cursor: pointer;
+    filter: contrast(200%) hue-rotate(90deg);
+}
+
+.navbar-secondary-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+    .navbar-items {
+        gap: 30px;
+        font-size: 0.9rem;
+    }
+    .navbar-account-icon {
+        width: 35px;
+    }
+    .navbar-secondary-wrapper {
+        gap: 10px;
+    }
+}
