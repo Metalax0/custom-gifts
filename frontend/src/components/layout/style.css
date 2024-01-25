@@ -1,3 +1,12 @@
 .layout {
+    min-height: 100vh;
     color: var(--fg-color);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Targetting any div that is inside <Outlet> and making 
+ it fill rest of the screen space */
+.layout > div:nth-child(2) {
+    flex: 1;
 }

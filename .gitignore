@@ -1,3 +1,6 @@
 /frontend/node_modules
 /backend/env
 /backend/GIFT/.env
+/backend/accounts/__pycache__
+/backend/GIFT/__pycache__
+/backend/products/__pycache__
