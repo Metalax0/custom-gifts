@@ -1,0 +1,10 @@
+.form-input-group-row {
+    display: flex;
+    gap: 5px;
+}
+
+.form-input-group-col {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}

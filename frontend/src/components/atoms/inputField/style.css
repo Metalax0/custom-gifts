@@ -1,0 +1,16 @@
+.txt-input {
+    color: var(--fg-color);
+    height: 30px;
+    border: none;
+    background-color: transparent;
+    border-bottom: 2px solid var(--active-color);
+}
+
+.txt-input:focus {
+    outline: none;
+}
+
+::placeholder {
+    color: var(--bg-color);
+    font-size: 1rem;
+}

@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { ThemeToggleBttn } from "../../../atoms/themeToggleBttn";
+import { ThemeToggleBttn } from "../../../molecules/themeToggleBttn";
 import "./style.css";
 
 export const DesktopNav = () => {
