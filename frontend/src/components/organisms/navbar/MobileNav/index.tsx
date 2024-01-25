@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import "./style.css";
-import { ThemeToggleBttn } from "../../../atoms/themeToggleBttn";
+import { ThemeToggleBttn } from "../../../molecules/themeToggleBttn";
 
 export const MobileNav = () => {
     return (
