@@ -1,13 +1,11 @@
-
-from django.shortcuts import render
 from accounts.models import User
 from rest_framework.response import Response
-from .serializers import SellerUserSerializer,CustomerUserSerializer,UserLoginSerializer,MeSerializer
-from rest_framework.permissions import IsAuthenticated,AllowAny
+from .serializers import SellerUserSerializer,CustomerUserSerializer,UserLoginSerializer
+from rest_framework.permissions import AllowAny
 from rest_framework.views import APIView
 from rest_framework import status,serializers
 from django.contrib.auth import authenticate
-from rest_framework_simplejwt.tokens import RefreshToken
+from accounts.tokens import get_tokens_for_user
 
 # Create your views here.
 
@@ -20,17 +18,11 @@ class SellerRegisterView(APIView):
             serializer=self.serializer_class(data=request.data)
 
             if serializer.is_valid(raise_exception=True):
-                user=serializer.save()
-
-                # Generate JWT tokens
-                refresh = RefreshToken.for_user(user)
-                access_token = str(refresh.access_token)
-                refresh_token = str(refresh)
+                serializer.save()
 
                 return Response({
                     'msg':"seller registration success",
-                    'access_token': access_token,
-                    'refresh_token': refresh_token
+                    'data':serializer.data
                     },status=status.HTTP_201_CREATED)
 
         except serializers.ValidationError as e:
@@ -47,16 +39,11 @@ class CustomerRegisterView(APIView):
             serializer=self.serializer_class(data=request.data)
 
             if serializer.is_valid(raise_exception=True):
-                user=serializer.save()
-                # Generate JWT tokens
-                refresh = RefreshToken.for_user(user)
-                access_token = str(refresh.access_token)
-                refresh_token = str(refresh)
+                serializer.save()
 
                 return Response({
-                    'msg':"customer registration success",
-                    'access_token': access_token,
-                    'refresh_token': refresh_token
+                    'msg':"seller registration success",
+                    'data':serializer.data
                     },status=status.HTTP_201_CREATED)
 
         except serializers.ValidationError as e:
@@ -78,16 +65,11 @@ class UserLoginView(APIView):
 
                 user=authenticate(email=email,password=password)
                 if user is not None:
-
-                    # Generate JWT tokens
-                    refresh = RefreshToken.for_user(user)
-                    access_token = str(refresh.access_token)
-                    refresh_token = str(refresh)
+                    tokens=get_tokens_for_user(user)
 
                     return Response({
                         'msg':"login success",
-                        'access_token': access_token,
-                        'refresh_token': refresh_token
+                        'tokens': tokens
                         },status=status.HTTP_200_OK)
                 else:
                     return Response({'msg': 'User Not Found'}, status=status.HTTP_401_UNAUTHORIZED)
@@ -99,21 +81,4 @@ class UserLoginView(APIView):
             return Response({'msg': 'Something went wrong', 'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
 
-class Me(APIView):
-    permission_classes = (IsAuthenticated,)
-    def get(self,request,*args,**kwargs):
-        user = request.user
-        serializer=MeSerializer(user)
-
-        #TOKENS
-        refresh = RefreshToken.for_user(user)
-        access_token = str(refresh.access_token)
-        refresh_token = str(refresh)
-
-        return Response({
-            'me':serializer.data
-            # 'access token':access_token,
-            # 'refresh_token':refresh_token
-            },
-            status=status.HTTP_200_OK)
 

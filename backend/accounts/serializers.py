@@ -15,9 +15,12 @@ class SellerUserSerializer(serializers.ModelSerializer):
         password = data.get('password')
         confirm_password = data.get('confirm_password')
 
+        email_exists=User.objects.filter(email=data['email']).exists()
+        if email_exists:
+            raise serializers.ValidationError("Email already exists")
+
         if  password != confirm_password:
             raise serializers.ValidationError("Passwords do not match.")
-
         return data
 
     def create(self,validated_data):
@@ -37,6 +40,10 @@ class CustomerUserSerializer(serializers.ModelSerializer):
         password = data.get('password')
         confirm_password = data.get('confirm_password')
 
+        email_exists=User.objects.filter(email=data['email']).exists()
+        if email_exists:
+            raise serializers.ValidationError("Email already exists")
+
         if  password != confirm_password:
             raise serializers.ValidationError("Passwords do not match.")
 
@@ -54,8 +61,3 @@ class UserLoginSerializer(serializers.ModelSerializer):
         model=User
         fields=['email','password']
 
-#ME 
-class MeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model=User
-        fields = '__all__'
