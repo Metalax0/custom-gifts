@@ -24,7 +24,7 @@ class CustomerProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     phone_no = models.CharField(max_length=15)
     gender = models.CharField(max_length=10)
-    dob = models.DateField()
+    dob = models.DateField(null=True,blank=True)
     bio = models.TextField()
     avatar = models.ImageField(upload_to='customer_avatars/', null=True, blank=True)
     address = models.TextField()

@@ -8,8 +8,10 @@ class SellerProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = SellerProfile
         fields = '__all__'
+        read_only_fields = ['user']
 
 class CustomerProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomerProfile
         fields = '__all__'
+        read_only_fields = ['user']
