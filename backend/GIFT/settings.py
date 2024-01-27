@@ -51,6 +51,7 @@ INSTALLED_APPS = [
 
     'accounts',
     'products',
+    'userprofile'
 ]
 
 MIDDLEWARE = [
@@ -160,7 +161,8 @@ MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 
 REST_FRAMEWORK={
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.AllowAny',
+        # 'rest_framework.permissions.IsAuthenticated',
     ]
     ,
     'DEFAULT_AUTHENTICATION_CLASSES': [
@@ -170,9 +172,12 @@ REST_FRAMEWORK={
 
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=15),
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
     "ALGORITHM": "HS256",
+    "SIGNING_KEY": env('SECRET_KEY'),
+    "ROTATE_REFRESH_TOKENS": False,
+    "BLACKLIST_AFTER_ROTATION": False,
     "AUTH_HEADER_TYPES": ("Bearer",),
     "USER_AUTHENTICATION_RULE": "rest_framework_simplejwt.authentication.default_user_authentication_rule",
     "AUTH_TOKEN_CLASSES": ("rest_framework_simplejwt.tokens.AccessToken",),
