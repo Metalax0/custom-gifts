@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Login } from "./components/pages/login";
 import { Error } from "./components/pages/error";
 import { Layout } from "./components/layout";
+import { Register } from "./components/pages/register";
 
 function App() {
     return (
@@ -13,6 +14,7 @@ function App() {
                     <Route path="/" element={<Layout />}>
                         <Route index element={<Landing />} />
                         <Route path="/login" element={<Login />} />
+                        <Route path="/register" element={<Register />} />
                         <Route path="*" element={<Error />} />
                     </Route>
                 </Routes>

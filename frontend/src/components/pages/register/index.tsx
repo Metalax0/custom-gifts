@@ -1,24 +1,25 @@
 import "./style.css";
 import { useState } from "react";
 import { FormInputGroup } from "../../molecules/formInputGroup";
-import { LoginFormType } from "../../../types/loginFormType";
-import { FormCheckboxGroup } from "../../molecules/formCheckboxGroup";
 import { NavLink } from "react-router-dom";
 import { Button } from "../../atoms/button";
+import { RegisterFormType } from "../../../types/registerFormType";
 
-export const Login = () => {
-    const [loginForm, setloginForm] = useState<LoginFormType>({
+export const Register = () => {
+    const [registerForm, setregisterForm] = useState<RegisterFormType>({
+        fullName: "",
         email: "",
         password: "",
+        confirmPassword: "",
         rememberMe: false,
     });
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setloginForm({ ...loginForm, [e.target.name]: e.target.value });
+        setregisterForm({ ...registerForm, [e.target.name]: e.target.value });
     };
 
     const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setloginForm({ ...loginForm, [e.target.name]: e.target.checked });
+        setregisterForm({ ...registerForm, [e.target.name]: e.target.checked });
     };
 
     const handleButtonClick = (
@@ -28,10 +29,16 @@ export const Login = () => {
     };
 
     return (
-        <div className="login">
-            <form className="login-form">
-                <h1>Login</h1>
+        <div className="register">
+            <form className="register-form">
+                <h1>Register</h1>
                 <div className="form-fields">
+                    <FormInputGroup
+                        layout="col"
+                        type="fullName"
+                        placeholder="john wick"
+                        handleInputChange={handleInputChange}
+                    />
                     <FormInputGroup
                         layout="col"
                         type="email"
@@ -44,26 +51,20 @@ export const Login = () => {
                         placeholder="**********"
                         handleInputChange={handleInputChange}
                     />
-                    <div className="flex-row  gap-40">
-                        <FormCheckboxGroup
-                            layout="row"
-                            type="rememberMe"
-                            handleCheckboxChange={handleCheckboxChange}
-                        />
-                        <div className="flex-row">
-                            <NavLink to="/forgot-password">
-                                Forgot Password
-                            </NavLink>
-                        </div>
-                    </div>
+                    <FormInputGroup
+                        layout="col"
+                        type="confirmPassword"
+                        placeholder="**********"
+                        handleInputChange={handleInputChange}
+                    />
                     <Button
-                        text="Login"
+                        text="Register"
                         handleButtonClick={handleButtonClick}
                         isSubmit
                     />
                     <p className="flex-row gap-10">
-                        <label>Don't have an account?</label>
-                        <NavLink to="/register">Register</NavLink>
+                        <label>Already have an account?</label>
+                        <NavLink to="/login">Login</NavLink>
                     </p>
                 </div>
             </form>

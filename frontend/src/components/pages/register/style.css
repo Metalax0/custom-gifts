@@ -1,12 +1,12 @@
-.login {
-    background-image: url("../../../assets/login-bg-2.jpg");
-    /* background-size: contain; */
+.register {
+    background-image: url("../../../assets/login-bg-3.jpg");
+    background-size: contain;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.login-form {
+.register-form {
     width: 40vh;
     padding: 20px;
 
