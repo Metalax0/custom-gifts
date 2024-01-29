@@ -69,7 +69,11 @@ class UserLoginView(APIView):
 
                     return Response({
                         'msg':"login success",
-                        'tokens': tokens
+                        'tokens': tokens,
+                        "userInfo":{
+                            'id':user.id,
+                            'name':user.name,
+                        }
                         },status=status.HTTP_200_OK)
                 else:
                     return Response({'msg': 'User Not Found'}, status=status.HTTP_401_UNAUTHORIZED)
