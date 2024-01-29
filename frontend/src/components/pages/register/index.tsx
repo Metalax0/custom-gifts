@@ -7,11 +7,11 @@ import { RegisterFormType } from "../../../types/registerFormType";
 
 export const Register = () => {
     const [registerForm, setregisterForm] = useState<RegisterFormType>({
-        fullName: "",
+        name: "",
         email: "",
         password: "",
-        confirmPassword: "",
-        rememberMe: false,
+        confirm_password: "",
+        // rememberMe: false,
     });
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,16 +26,43 @@ export const Register = () => {
         e: React.MouseEvent<HTMLButtonElement, MouseEvent>
     ) => {
         console.log("Login Bttn Clicked");
+        callRegisterAPI();
+    };
+
+    //
+    const callRegisterAPI = async () => {
+        const URL = "http://localhost:8000/account/seller.register";
+        let data = null;
+
+        let fetchData = {
+            method: "POST",
+            body: JSON.stringify(registerForm),
+            headers: new Headers({
+                "Content-Type": "application/json; charset=UTF-8",
+            }),
+        };
+
+        console.log(fetchData);
+
+        try {
+            const response = await fetch(URL, fetchData);
+            data = await response.json();
+        } catch (error) {
+            console.log("ERROR AAYO HAI", error);
+        }
+
+        console.log(data);
     };
 
     return (
         <div className="register">
-            <form className="register-form">
+            {/* <form className="register-form"> */}
+            <div className="register-form">
                 <h1>Register</h1>
                 <div className="form-fields">
                     <FormInputGroup
                         layout="col"
-                        type="fullName"
+                        type="name"
                         placeholder="john wick"
                         handleInputChange={handleInputChange}
                     />
@@ -53,7 +80,7 @@ export const Register = () => {
                     />
                     <FormInputGroup
                         layout="col"
-                        type="confirmPassword"
+                        type="confirm_password"
                         placeholder="**********"
                         handleInputChange={handleInputChange}
                     />
@@ -67,7 +94,7 @@ export const Register = () => {
                         <NavLink to="/login">Login</NavLink>
                     </p>
                 </div>
-            </form>
+            </div>
         </div>
     );
 };

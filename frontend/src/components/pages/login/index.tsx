@@ -10,7 +10,7 @@ export const Login = () => {
     const [loginForm, setloginForm] = useState<LoginFormType>({
         email: "",
         password: "",
-        rememberMe: false,
+        // rememberMe: false,
     });
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,11 +25,36 @@ export const Login = () => {
         e: React.MouseEvent<HTMLButtonElement, MouseEvent>
     ) => {
         console.log("Login Bttn Clicked");
+        callLoginAPI();
+    };
+
+    //
+    const callLoginAPI = async () => {
+        const URL = "http://localhost:8000/account/login";
+        let data = null;
+
+        let fetchData = {
+            method: "POST",
+            body: JSON.stringify(loginForm),
+            headers: new Headers({
+                "Content-Type": "application/json; charset=UTF-8",
+            }),
+        };
+
+        try {
+            const response = await fetch(URL, fetchData);
+            data = await response.json();
+        } catch (error) {
+            console.log("ERROR AAYO HAI", error);
+        }
+
+        console.log(data);
     };
 
     return (
         <div className="login">
-            <form className="login-form">
+            {/* <form className="login-form"> */}
+            <div className="login-form">
                 <h1>Login</h1>
                 <div className="form-fields">
                     <FormInputGroup
@@ -66,7 +91,7 @@ export const Login = () => {
                         <NavLink to="/register">Register</NavLink>
                     </p>
                 </div>
-            </form>
+            </div>
         </div>
     );
 };
