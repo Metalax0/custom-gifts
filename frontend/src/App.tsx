@@ -5,20 +5,23 @@ import { Login } from "./components/pages/login";
 import { Error } from "./components/pages/error";
 import { Layout } from "./components/layout";
 import { Register } from "./components/pages/register";
+import NotificationProvider from "./misc/notification-provider";
 
 function App() {
     return (
         <div className="app">
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<Layout />}>
-                        <Route index element={<Landing />} />
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/register" element={<Register />} />
-                        <Route path="*" element={<Error />} />
-                    </Route>
-                </Routes>
-            </BrowserRouter>
+            <NotificationProvider>
+                <BrowserRouter>
+                    <Routes>
+                        <Route path="/" element={<Layout />}>
+                            <Route index element={<Landing />} />
+                            <Route path="/login" element={<Login />} />
+                            <Route path="/register" element={<Register />} />
+                            <Route path="*" element={<Error />} />
+                        </Route>
+                    </Routes>
+                </BrowserRouter>
+            </NotificationProvider>
         </div>
     );
 }

@@ -1,41 +1,26 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { callAPI } from "../api/axios";
 
-export const useAPI = <T>(
-    url: string,
-    options?: AxiosRequestConfig,
-    token?: string
-) => {
-    const [data, setData] = useState<T | null>(null);
+export const useAPI = () => {
+    const [data, setData] = useState<any>(null);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<unknown>(null);
 
-    const fetchData = async () => {
+    const API = async (
+        method: "GET" | "POST",
+        url: string,
+        data: any = null
+    ) => {
         setIsLoading(true);
-
         try {
-            // If token provided, make API requests, attaching the token
-            if (token) {
-                options = {
-                    ...options,
-                    headers: {
-                        ...options?.headers,
-                        Authorization: `Bearer ${token}`,
-                    },
-                };
-            }
-            const response: AxiosResponse<T> = await axios(url, options);
-            setData(response.data);
+            const response = await callAPI(method, url, data);
+            setData(response);
         } catch (err) {
             setError(err);
+            // change a global state of error. Give a notification on top right.
         }
-
         setIsLoading(false);
     };
 
-    useEffect(() => {
-        fetchData();
-    }, []);
-
-    return { data, isLoading, error };
+    return { API, data, isLoading, error };
 };
