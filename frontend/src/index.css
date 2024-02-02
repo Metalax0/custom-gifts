@@ -24,6 +24,11 @@ body {
 
     --active-color: #58b958;
     --hover-color: #58b958;
+    --heading-color: #04aa6d;
+
+    --font-glitch: "Rubik Glitch Pop", system-ui;
+    --font-archivo: "Archivo Black", sans-serif;
+    --font-monoton: "Monoton", sans-serif;
 }
 
 /* Customizing Dark Theme */
@@ -33,6 +38,7 @@ body {
 
     --active-color: #04aa6d;
     --hover-color: #04aa6d;
+    --heading-color: #04aa6d;
 }
 
 /*  */
