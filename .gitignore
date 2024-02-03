@@ -4,3 +4,5 @@
 /backend/accounts/__pycache__
 /backend/GIFT/__pycache__
 /backend/products/__pycache__
+/backend/accounts/migrations
+/backend/userprofile/migrations

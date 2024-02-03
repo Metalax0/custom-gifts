@@ -38,7 +38,6 @@ class SellerProfileView(APIView):
         except Exception as e:
             return Response({'msg': 'Something went wrong', 'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
-
     def put(self, request):
         user_profile = SellerProfile.objects.get(user=request.user)
         serializer = SellerProfileSerializer(user_profile, data=request.data)
