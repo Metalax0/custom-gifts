@@ -11,6 +11,7 @@ export const useAPI = () => {
         url: string,
         data: any = null
     ) => {
+        console.log("USE API HOOK CALLLEDD");
         setIsLoading(true);
         try {
             const response = await callAPI(method, url, data);
