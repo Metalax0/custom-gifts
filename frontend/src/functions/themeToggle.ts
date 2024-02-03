@@ -8,3 +8,7 @@ export const changeTheme = (theme: string, setState: any) => {
     localStorage.setItem("theme", theme);
     setState(theme);
 };
+
+export const isDarkTheme = () => {
+    return localStorage.getItem("theme") === "dark" ? true : false;
+};
