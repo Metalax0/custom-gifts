@@ -6,6 +6,7 @@ import { Error } from "./components/pages/error";
 import { Layout } from "./components/layout";
 import { Register } from "./components/pages/register";
 import NotificationProvider from "./misc/notification-provider";
+import { TestComponenet } from "./components/pages/test";
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
                             <Route index element={<Landing />} />
                             <Route path="/login" element={<Login />} />
                             <Route path="/register" element={<Register />} />
+                            <Route path="/test" element={<TestComponenet />} />
                             <Route path="*" element={<Error />} />
                         </Route>
                     </Routes>
