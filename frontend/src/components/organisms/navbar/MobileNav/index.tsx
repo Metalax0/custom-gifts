@@ -1,8 +1,11 @@
 import { NavLink } from "react-router-dom";
 import "./style.css";
 import { ThemeToggleBttn } from "../../../molecules/themeToggleBttn";
+import { useIsLoggedIn } from "../../../../hooks/useIsLoggedIn";
 
 export const MobileNav = () => {
+    const isLoggedIn = useIsLoggedIn();
+
     return (
         <div className="mobile-nav">
             <button className="dropbtn">
@@ -32,18 +35,24 @@ export const MobileNav = () => {
             <div className="dropdown-content">
                 <ul>
                     <li>
-                        <NavLink
-                            to="/login"
-                            className={({ isActive }) =>
-                                isActive ? "" : "inactive"
-                            }
-                        >
-                            <img
-                                className="navbar-account-icon"
-                                src="images/user-icon.png"
-                                alt="store logo"
-                            />
-                        </NavLink>
+                        {isLoggedIn ? (
+                            <NavLink
+                                to="/profile"
+                                className={({ isActive }) =>
+                                    isActive ? "" : "inactive"
+                                }
+                            >
+                                <img
+                                    className="navbar-account-icon"
+                                    src="images/user-icon.png"
+                                    alt="store logo"
+                                />
+                            </NavLink>
+                        ) : (
+                            <NavLink to="/login" className="inactive">
+                                Login
+                            </NavLink>
+                        )}
                     </li>
                     <li>
                         <NavLink
@@ -57,12 +66,12 @@ export const MobileNav = () => {
                     </li>
                     <li>
                         <NavLink
-                            to="/services"
+                            to="/store"
                             className={({ isActive }) =>
                                 isActive ? "active" : "inactive"
                             }
                         >
-                            Services
+                            Store
                         </NavLink>
                     </li>
                     <li>

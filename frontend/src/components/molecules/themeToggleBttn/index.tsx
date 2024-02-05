@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { changeTheme, toggleTheme } from "../../../functions/themeToggle";
+import { toggleTheme } from "../../../functions/themeToggle";
 import "./style.css";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../state-management/store";
@@ -7,15 +6,6 @@ import { RootState } from "../../../state-management/store";
 export const ThemeToggleBttn = () => {
     const dispatch = useDispatch();
     const theme = useSelector((state: RootState) => state.ui.theme);
-
-    useEffect(() => {
-        const currentTheme = localStorage.getItem("theme");
-        if (currentTheme === "dark") {
-            changeTheme(currentTheme, dispatch);
-        } else {
-            changeTheme("light", dispatch);
-        }
-    }, []);
 
     return (
         <button

@@ -9,15 +9,20 @@ import { apiRoutes } from "../../../api/apiRoutes";
 import { useAPI } from "../../../hooks/useAPI";
 import { setCookie } from "typescript-cookie";
 import { NotificationContext } from "../../../misc/notification-provider";
+import { useDispatch } from "react-redux";
+import { setUserDetails } from "../../../state-management/slices/userSlice";
+import { setCredentials } from "../../../state-management/slices/authSlice";
 
 export const Login = () => {
     const [loginForm, setloginForm] = useState<LoginFormType>({
         email: "",
         password: "",
+        rememberMe: false,
     });
     const loginAPI = useAPI();
     const navigate = useNavigate();
     const { openNotification } = useContext(NotificationContext);
+    const dispatch = useDispatch();
 
     // Handles API success and failure cases
     useEffect(() => {
@@ -28,11 +33,26 @@ export const Login = () => {
                 `Welcome ${loginAPI.data.userInfo.name}`,
                 "success"
             );
+            const data = {
+                id: loginAPI.data.userInfo.id,
+                name: loginAPI.data.userInfo.name,
+            };
+            if (loginForm.rememberMe)
+                setCookie("userInfo", JSON.stringify(data));
             setCookie("token", loginAPI.data.tokens.access);
+            dispatch(setUserDetails(data) as any);
+            dispatch(setCredentials(loginAPI.data.tokens.access) as any);
             navigate("/");
         } else if (loginAPI.error)
             openNotification("Login Error", `${loginAPI.error}`, "error");
-    }, [loginAPI.data, loginAPI.error, navigate, openNotification]);
+    }, [
+        dispatch,
+        loginAPI.data,
+        loginAPI.error,
+        loginForm.rememberMe,
+        navigate,
+        openNotification,
+    ]);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setloginForm({ ...loginForm, [e.target.name]: e.target.value });

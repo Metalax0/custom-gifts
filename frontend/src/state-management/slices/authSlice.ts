@@ -19,9 +19,13 @@ const authOptions: CreateSliceOptions = {
         ) => {
             return { token: action.payload };
         },
+
+        resetCredentials: () => {
+            return { token: null };
+        },
     },
 };
 
 const authSlice = createSlice(authOptions);
-export const { setSettings } = authSlice.actions;
+export const { setCredentials, resetCredentials } = authSlice.actions;
 export default authSlice.reducer;
