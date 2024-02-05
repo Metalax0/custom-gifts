@@ -1,8 +1,11 @@
 import { NavLink } from "react-router-dom";
 import { ThemeToggleBttn } from "../../../molecules/themeToggleBttn";
 import "./style.css";
+import { useIsLoggedIn } from "../../../../hooks/useIsLoggedIn";
 
 export const DesktopNav = () => {
+    const isLoggedIn = useIsLoggedIn();
+
     return (
         <>
             <ul className="navbar-items">
@@ -18,12 +21,12 @@ export const DesktopNav = () => {
                 </li>
                 <li>
                     <NavLink
-                        to="/services"
+                        to="/store"
                         className={({ isActive }) =>
                             isActive ? "active" : "inactive"
                         }
                     >
-                        Services
+                        Store
                     </NavLink>
                 </li>
                 <li>
@@ -49,16 +52,24 @@ export const DesktopNav = () => {
             </ul>
             <div className="navbar-secondary-wrapper">
                 <ThemeToggleBttn />
-                <NavLink
-                    to="/login"
-                    className={({ isActive }) => (isActive ? "" : "inactive")}
-                >
-                    <img
-                        className="navbar-account-icon"
-                        src="images/user-icon.png"
-                        alt="store logo"
-                    />
-                </NavLink>
+                {isLoggedIn ? (
+                    <NavLink
+                        to="/profile"
+                        className={({ isActive }) =>
+                            isActive ? "" : "inactive"
+                        }
+                    >
+                        <img
+                            className="navbar-account-icon"
+                            src="images/user-icon.png"
+                            alt="store logo"
+                        />
+                    </NavLink>
+                ) : (
+                    <NavLink to="/login" className="inactive">
+                        Login
+                    </NavLink>
+                )}
             </div>
         </>
     );
