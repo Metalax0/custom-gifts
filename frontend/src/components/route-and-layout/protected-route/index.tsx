@@ -1,8 +1,9 @@
 import { Outlet, Navigate } from "react-router-dom";
-import { isLoggedIn } from "../../../functions/isLoggedIn";
+import { useIsLoggedIn } from "../../../hooks/useIsLoggedIn";
 
 const ProtectedRoute = () => {
-    return isLoggedIn() ? <Outlet /> : <Navigate to="/login" />;
+    const isLoggedIn = useIsLoggedIn();
+    return isLoggedIn ? <Outlet /> : <Navigate to="/login" />;
 };
 
 export default ProtectedRoute;

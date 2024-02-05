@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { logout } from "../../../functions/logout";
+import { logout } from "../../../utils/logout";
 import { Button } from "../../atoms/button";
 import "./style.css";
 import { useNavigate } from "react-router-dom";

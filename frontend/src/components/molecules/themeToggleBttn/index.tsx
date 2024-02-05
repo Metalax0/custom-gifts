@@ -1,4 +1,4 @@
-import { toggleTheme } from "../../../functions/themeToggle";
+import { toggleTheme } from "../../../utils/themeToggle";
 import "./style.css";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../state-management/store";

@@ -11,7 +11,7 @@ import { getCookie } from "typescript-cookie";
 import { useDispatch } from "react-redux";
 import { setUserDetails } from "../../../state-management/slices/userSlice";
 import { Profile } from "../../pages/profile";
-import { changeTheme } from "../../../functions/themeToggle";
+import { changeTheme } from "../../../utils/themeToggle";
 
 export const AppRoutes = () => {
     const dispatch = useDispatch();
