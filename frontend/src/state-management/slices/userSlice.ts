@@ -6,6 +6,7 @@ import {
 import { userSliceState } from "../../types/store/userSliceType";
 
 const initialState: userSliceState = {
+    id: "",
     name: "Guest",
     isLoggedIn: false,
 };

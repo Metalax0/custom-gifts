@@ -1,12 +1,14 @@
-export const toggleTheme = (setState: any) => {
+import { setTheme } from "../state-management/slices/uiSlice";
+
+export const toggleTheme = (dispatch: any) => {
     const currentTheme = document.querySelector("html")!.getAttribute("theme");
-    changeTheme(currentTheme === "dark" ? "light" : "dark", setState);
+    changeTheme(currentTheme === "dark" ? "light" : "dark", dispatch);
 };
 
-export const changeTheme = (theme: string, setState: any) => {
-    document.querySelector("html")!.setAttribute("theme", theme);
-    localStorage.setItem("theme", theme);
-    setState(theme);
+export const changeTheme = (newTheme: string, dispatch: any) => {
+    document.querySelector("html")!.setAttribute("theme", newTheme);
+    localStorage.setItem("theme", newTheme);
+    dispatch(setTheme(newTheme));
 };
 
 export const isDarkTheme = () => {
