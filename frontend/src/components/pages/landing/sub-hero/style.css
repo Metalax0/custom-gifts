@@ -1,0 +1,113 @@
+* {
+    /* outline: 2px solid red; */
+}
+
+.landing-sub-hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    letter-spacing: normal;
+    letter-spacing: 1px;
+    gap: 10px;
+}
+
+.sub-hero-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sub-hero-left {
+    flex: 1;
+    padding-left: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 35px;
+}
+
+.sub-hero-right {
+    flex: 1;
+    padding: 20px;
+    /* filter: drop-shadow(var(--hover-color) 0px 0px 10px); */
+    filter: drop-shadow(var(--fg-color) 0px 0px 10px);
+}
+
+.sub-hero-product-img {
+    width: 100%;
+    clip-path: ellipse(400px 420px at 50% 0%);
+    clip-path: ellipse(350px 400px at 50% 10%);
+    background-color: red;
+}
+
+.sub-hero-h1 {
+    font-size: 3.5rem;
+}
+
+.sub-hero-h2 {
+    font-size: 1.2rem;
+    font-family: var(--font-mulish);
+}
+
+.sub-hero-bttn-group {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 30px;
+}
+
+.sub-hero-left-info {
+    display: flex;
+    gap: 10px;
+    font-family: var(--font-mulish);
+}
+
+.sub-hero-txt {
+    font-size: 0.8rem;
+}
+
+.sub-hero-left-info-block {
+    display: flex;
+    padding-right: 20px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.sub-hero-left-info-block:nth-child(1),
+.sub-hero-left-info-block:nth-child(2) {
+    border-right: 3px solid var(--fg-color);
+}
+
+.sub-hero-bottom {
+    display: flex;
+    width: 100%;
+    color: var(--bg-color);
+    font-family: var(--font-mulish);
+    background-color: var(--fg-color);
+    background-color: var(--active-color);
+}
+
+.sub-hero-txt-client {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    font-size: 1.2rem;
+    margin-left: 70px;
+}
+
+.sub-hero-bottom div {
+    flex: 3;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.sub-hero-client-img {
+    border-radius: 10px;
+    width: 10%;
+    height: 90%;
+}
