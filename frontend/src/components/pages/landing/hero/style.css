@@ -1,0 +1,44 @@
+.landing-hero {
+    font-family: var(--font-monoton);
+}
+
+.landing-hero video {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    position: absolute;
+    filter: blur(3px);
+}
+
+.hero-txt-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 5;
+}
+
+.hero-txt-primary {
+    filter: drop-shadow(5px 5px red);
+    font-size: 5rem;
+}
+
+.hero-txt-secondary {
+    font-size: 1.3rem;
+    font-family: var(--font-archivo);
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .landing-hero {
+        letter-spacing: 3px;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+    .landing-hero {
+        letter-spacing: 5px;
+    }
+}

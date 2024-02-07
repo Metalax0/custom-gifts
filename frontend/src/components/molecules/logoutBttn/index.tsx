@@ -10,6 +10,7 @@ export const LogoutBttn = () => {
     return (
         <Button
             text="Logout"
+            type="primary"
             handleButtonClick={() => logout(dispatch, navigate)}
         />
     );

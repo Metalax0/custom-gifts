@@ -1,20 +1,27 @@
 .bttn {
     padding: 15px;
-    border: 2px solid var(--fg-color);
+    border: 2px solid;
     border-radius: 10px;
-
-    color: var(--fg-color);
-    background-color: var(--bg-color);
-
     box-shadow: 0px 0px 10px var(--bg-color);
-
     letter-spacing: 7px;
     font-weight: bold;
 }
 
-.bttn:hover {
-    cursor: pointer;
+.bttn-primary {
     border-color: var(--bg-color);
     color: var(--bg-color);
     background-color: var(--fg-color);
+}
+
+.bttn-secondary {
+    border-color: var(--fg-color);
+    color: var(--fg-color);
+    background-color: var(--bg-color);
+}
+
+.bttn:hover {
+    cursor: pointer;
+    border-radius: 100px;
+    background-color: var(--active-color);
+    color: var(--bg-color);
 }

@@ -79,7 +79,7 @@ export const Register = () => {
                             <Button
                                 text="Register"
                                 handleButtonClick={handleButtonClick}
-                                isSubmit
+                                type="primary"
                             />
                             <p className="flex-row gap-10">
                                 <label>Already have an account?</label>

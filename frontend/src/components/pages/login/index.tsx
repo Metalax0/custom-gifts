@@ -102,7 +102,7 @@ export const Login = () => {
                             <Button
                                 text="Login"
                                 handleButtonClick={handleButtonClick}
-                                isSubmit
+                                type="primary"
                             />
                             <p className="flex-row gap-10">
                                 <label>Don't have an account?</label>
