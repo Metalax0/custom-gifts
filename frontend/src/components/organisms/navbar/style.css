@@ -3,16 +3,18 @@
     justify-content: space-between;
     align-items: center;
 
-    padding: 0px 15px;
     color: var(--fg-color);
     background-color: black;
     background-color: transparent;
 
-    position: relative;
+    padding: 13px 0px;
+    width: 100%;
+    position: absolute;
     z-index: 2;
 }
 
 .navbar-logo {
+    margin-left: 15px;
     height: 50px;
     filter: grayscale(100%) contrast(200%);
 }
@@ -20,6 +22,7 @@
 .navbar-secondary-wrapper,
 .navbar-items,
 .mobile-nav {
+    margin-right: 15px;
     display: none !important;
 }
 
