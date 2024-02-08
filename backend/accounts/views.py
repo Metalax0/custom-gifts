@@ -85,4 +85,3 @@ class UserLoginView(APIView):
             return Response({'msg': 'Something went wrong', 'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
 
-
