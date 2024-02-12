@@ -59,12 +59,9 @@ export const LandingSubHero = () => {
             </div>
             <div className="sub-hero-bottom">
                 <label className="sub-hero-txt-client">
-                    <b>
-                        Trusted by 1,000+ clients all over the world (real stats
-                        xD)
-                    </b>
+                    <b>Trusted by 1,000+ clients </b>
                 </label>
-                <div>
+                <div className="sub-hero-bottom-client-container">
                     <img
                         className="sub-hero-client-img"
                         src="images/logo-1.png"
