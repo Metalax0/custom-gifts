@@ -1,9 +1,10 @@
 .bttn {
+    font-size: 0.9rem;
     padding: 15px;
     border: 2px solid;
     border-radius: 10px;
     box-shadow: 0px 0px 10px var(--bg-color);
-    letter-spacing: 7px;
+    letter-spacing: 3px;
     font-weight: bold;
 }
 

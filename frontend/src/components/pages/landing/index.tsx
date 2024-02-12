@@ -14,16 +14,16 @@ export const Landing = () => {
             <LandingSubHero />
             <Workings />
             <div className="landing-section">
-                <h1>T-SHIRTS</h1>
+                <h2>T-SHIRTS</h2>
             </div>
             <div className="landing-section">
-                <h1>PHOTO FRAME</h1>
+                <h2>PHOTO FRAME</h2>
             </div>
             <div className="landing-section">
-                <h1>CUPS & MUGS</h1>
+                <h2>CUPS & MUGS</h2>
             </div>
             <div className="landing-section">
-                <h1>WALL DECAL</h1>
+                <h2>WALL DECAL</h2>
             </div>
         </div>
     );
