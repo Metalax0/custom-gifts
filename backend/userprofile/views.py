@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from rest_framework.generics import GenericAPIView
 from rest_framework import status,serializers
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -8,7 +8,8 @@ from userprofile.serializers import CustomerProfileSerializer,SellerProfileSeria
 from userprofile.models import SellerProfile,CustomerProfile
 
 # Create your views here.
-class SellerProfileView(APIView):
+class SellerProfileView(GenericAPIView):
+    serializer_class=SellerProfileSerializer
     permission_classes = (IsAuthenticated,)
     def get(self, request):
         user_profile = SellerProfile.objects.get(user=request.user)
@@ -48,7 +49,8 @@ class SellerProfileView(APIView):
 
 
 #CUSTOMER PROFILE
-class CustomerProfileView(APIView):
+class CustomerProfileView(GenericAPIView):
+    serializer_class=CustomerProfileSerializer
     permission_classes = (IsAuthenticated,)
     def get(self, request):
         user_profile = CustomerProfile.objects.get(user=request.user)
