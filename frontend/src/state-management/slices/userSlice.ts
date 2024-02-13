@@ -6,20 +6,38 @@ import {
 import { userSliceState } from "../../types/store/userSliceType";
 
 const initialState: userSliceState = {
-    name: "Guest",
-    isLoggedIn: false,
+    id: "",
+    name: "",
 };
 
 const userOptions: CreateSliceOptions = {
     name: "user",
     initialState,
     reducers: {
-        setUserName: (state: userSliceState, action: PayloadAction<string>) => {
-            return { ...state, name: action.payload };
+        setUserDetails: (
+            state: userSliceState,
+            action: PayloadAction<{
+                id: string;
+                name: string;
+            }>
+        ) => {
+            const { id, name } = action.payload;
+            return {
+                ...state,
+                id,
+                name,
+            };
+        },
+
+        resetUserDetails: () => {
+            return {
+                id: "",
+                name: "",
+            };
         },
     },
 };
 
 const useSlice = createSlice(userOptions);
-export const { setSettings } = useSlice.actions;
+export const { setUserDetails, resetUserDetails } = useSlice.actions;
 export default useSlice.reducer;

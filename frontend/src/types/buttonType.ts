@@ -1,6 +1,6 @@
 export interface ButtonPropType {
     text: string;
-    isSubmit: boolean;
+    type: "primary" | "secondary";
     handleButtonClick: (
         e: React.MouseEvent<HTMLButtonElement, MouseEvent>
     ) => void;

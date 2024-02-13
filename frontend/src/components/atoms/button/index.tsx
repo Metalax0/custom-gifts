@@ -1,9 +1,9 @@
 import { ButtonPropType } from "../../../types/buttonType";
 import "./style.css";
 
-export const Button = ({ text, handleButtonClick }: ButtonPropType) => {
+export const Button = ({ text, handleButtonClick, type }: ButtonPropType) => {
     return (
-        <button className="bttn" onClick={handleButtonClick}>
+        <button className={`bttn bttn-${type}`} onClick={handleButtonClick}>
             {text}
         </button>
     );

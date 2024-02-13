@@ -1,5 +1,4 @@
 .layout {
-    min-height: 100vh;
     color: var(--fg-color);
     display: flex;
     flex-direction: column;

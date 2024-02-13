@@ -6,3 +6,4 @@
 /backend/products/__pycache__
 /backend/accounts/migrations
 /backend/userprofile/migrations
+/backend/userprofile/__pycache__
