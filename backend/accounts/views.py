@@ -1,5 +1,6 @@
 from accounts.models import User
 from rest_framework.response import Response
+from rest_framework.generics import GenericAPIView
 from .serializers import SellerUserSerializer,CustomerUserSerializer,UserLoginSerializer
 from rest_framework.permissions import AllowAny
 from rest_framework.views import APIView
@@ -10,7 +11,7 @@ from accounts.tokens import get_tokens_for_user
 # Create your views here.
 
 # REGISTER USER
-class SellerRegisterView(APIView):
+class SellerRegisterView(GenericAPIView):
     permission_classes = (AllowAny,)
     serializer_class=SellerUserSerializer
     def post (self, request, *args, **kwargs):
@@ -31,7 +32,7 @@ class SellerRegisterView(APIView):
         except Exception as e:
             return Response({'msg': 'Something went wrong', 'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
-class CustomerRegisterView(APIView):
+class CustomerRegisterView(GenericAPIView):
     permission_classes = (AllowAny,)
     serializer_class=CustomerUserSerializer
     def post (self, request, *args, **kwargs):
@@ -52,7 +53,7 @@ class CustomerRegisterView(APIView):
         except Exception as e:
             return Response({'msg': 'Something went wrong', 'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
-class UserLoginView(APIView):
+class UserLoginView(GenericAPIView):
     permission_classes = (AllowAny,)
     serializer_class=UserLoginSerializer
     def post (self,request):

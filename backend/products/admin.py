@@ -12,7 +12,7 @@ class ProductAdmin(admin.ModelAdmin):
         if request.user.is_superuser:
             return qs
         return qs.filter(user=request.user)
-    
+
 class CustomizationAdmin(admin.ModelAdmin):
     list_display = ['customization_name']
 

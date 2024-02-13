@@ -3,9 +3,8 @@ from accounts.models import User
 from django.contrib.auth.admin import UserAdmin
 
 # Register your models here.
-
 class SellerAdmin(UserAdmin):
-    list_display = ('email', 'name', 'is_active', 'is_staff','is_seller','is_customer')
+    list_display = ('email', 'name','is_seller')
     list_filter = ('is_seller','is_staff')
     fieldsets = (
         ('User Data', {'fields': ('email', 'password')}),
@@ -22,8 +21,10 @@ class SellerAdmin(UserAdmin):
     ordering = ('email',)
 
     def get_queryset(self, request):
-        queryset = super().get_queryset(request)
-        return queryset.filter(is_seller=True)
+        qs = super().get_queryset(request)
+        if request.user.is_superuser:
+            return qs
+        return qs.filter(email=request.user)
     
     # def has_add_permission(self, request):
     #     return True
