@@ -59,7 +59,6 @@ class CustomerProfileView(GenericAPIView):
 
     def post(self, request):
         user_id=request.user.id
-
         user = User.objects.get(id=user_id)
         if not user:
             return Response({"error":"user doesnot exist"})
