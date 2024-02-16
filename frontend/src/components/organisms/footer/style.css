@@ -1,4 +1,6 @@
 .footer {
-    color: wheat;
-    background-color: black;
+    text-align: center;
+    padding: 10px 0;
+    border-top: 1px solid var(--fg-color);
+    background-color: var(--bg-color);
 }
