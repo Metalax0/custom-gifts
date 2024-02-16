@@ -13,7 +13,8 @@
 
     filter: drop-shadow(var(--hover-color) 10px 10px 0px);
 }
-steps-card-list-item .steps-card:hover {
+
+.steps-card:hover {
     cursor: pointer;
     transform: scale(1.05);
     filter: drop-shadow(var(--hover-color) 10px 10px 5px);
