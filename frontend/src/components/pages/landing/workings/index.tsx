@@ -32,7 +32,7 @@ export const Workings = () => {
 
     return (
         <div className="landing-workings landing-section">
-            <h3 className="landing-workings-title">How does all this work ?</h3>
+            <h3>How does all this work ?</h3>
             <div className="landing-workings-card-container">
                 {cardData.map((data: any) => (
                     <StepsCard

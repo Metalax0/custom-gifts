@@ -7,7 +7,6 @@
     letter-spacing: normal;
     letter-spacing: 1px;
 
-    padding: 50px 0;
     gap: 5vh;
 }
 
@@ -18,7 +17,7 @@
 
 .sub-hero-left {
     flex: 1;
-    padding-left: 70px;
+    padding-left: 50px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -37,15 +36,6 @@
     background-color: red;
 }
 
-.sub-hero-h1 {
-    font-size: 3rem;
-}
-
-.sub-hero-h2 {
-    font-size: 1.2rem;
-    font-family: var(--font-mulish);
-}
-
 .sub-hero-bttn-group {
     display: flex;
     justify-content: flex-start;
@@ -57,7 +47,6 @@
 .sub-hero-left-info {
     display: flex;
     gap: 10px;
-    font-family: var(--font-mulish);
 }
 
 .sub-hero-txt {
@@ -80,7 +69,6 @@
 .sub-hero-bottom {
     display: flex;
     color: var(--bg-color);
-    font-family: var(--font-mulish);
     background-color: var(--fg-color);
     background-color: var(--active-color);
 }
