@@ -7,9 +7,7 @@ export const LandingHero = ({ theme }: LandingHeroPropsType) => {
             {theme === "dark" ? <HeroBgVideoDark /> : <HeroBgVideoLight />}
             <div className="hero-txt-container">
                 <h1 className="hero-txt-primary"> Clover.Gifts</h1>
-                <h5 className="hero-txt-secondary">
-                    customize products to your liking
-                </h5>
+                <h5>customize products to your liking</h5>
             </div>
         </div>
     );

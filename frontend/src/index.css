@@ -25,10 +25,11 @@ body {
     --hover-color: #58b958;
     --heading-color: #04aa6d;
 
-    --font-glitch: "Rubik Glitch Pop", system-ui;
-    --font-archivo: "Archivo Black", sans-serif;
+    --card-bg: #f3b3a1;
+
     --font-monoton: "Monoton", sans-serif;
     --font-mulish: "Mulish", sans-serif;
+    --font-karla: "Karla", sans-serif;
 }
 
 /* Customizing Dark Theme */
@@ -39,6 +40,50 @@ body {
     --active-color: #04aa6d;
     --hover-color: #04aa6d;
     --heading-color: #04aa6d;
+
+    --card-bg: rgb(36, 36, 36);
+}
+
+/* Hero Header (landing) */
+h1 {
+    font-size: 5rem;
+    font-family: var(--font-monoton);
+}
+
+/* Sub Hero Header */
+h2 {
+    font-size: 3.2rem;
+    font-weight: 800;
+    font-family: var(--font-karla);
+}
+
+/* Section Header */
+h3 {
+    font-size: 2.8rem;
+    letter-spacing: 0.5px;
+    font-weight: 800;
+    font-family: var(--font-karla);
+}
+
+/*  Text - header */
+h4 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    font-family: var(--font-karla);
+}
+
+/* Text - normal */
+h5 {
+    font-weight: normal;
+    font-size: 1.3rem;
+    font-family: var(--font-mulish);
+}
+
+/* Text - small */
+h6 {
+    font-size: 1rem;
+    font-style: italic;
+    font-family: var(--font-mulish);
 }
 
 /*  */

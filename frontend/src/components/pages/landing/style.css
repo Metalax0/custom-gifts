@@ -11,9 +11,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
-    font-family: var(--font-archivo);
-    letter-spacing: 10px;
     font-size: 4rem;
 }
 

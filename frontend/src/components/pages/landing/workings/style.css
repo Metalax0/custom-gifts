@@ -12,11 +12,6 @@
     gap: 5%;
 }
 
-.landing-workings-title {
-    font-size: 2.5rem;
-    letter-spacing: 3px;
-}
-
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     .landing-workings-card-container {
