@@ -50,7 +50,7 @@ export const Register = () => {
                     <h1>Loading ...</h1>
                 ) : (
                     <>
-                        <h1>Register</h1>
+                        <h2>Register</h2>
                         <div className="form-fields">
                             <FormInputGroup
                                 layout="col"

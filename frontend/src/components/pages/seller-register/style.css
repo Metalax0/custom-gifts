@@ -1,0 +1,21 @@
+.seller-register {
+    margin-top: 80px;
+    margin-bottom: 30px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+
+    height: 100vh;
+}
+
+.seller-register-bttn-group {
+    display: flex;
+    gap: 40px;
+}
+
+.seller-register-txt {
+    color: var(--active-color);
+}

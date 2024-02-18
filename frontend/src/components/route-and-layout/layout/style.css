@@ -2,6 +2,7 @@
     color: var(--fg-color);
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
 }
 
 /* Targetting any div that is inside <Outlet> and making 
