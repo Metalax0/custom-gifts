@@ -4,4 +4,5 @@ export interface ButtonPropType {
     handleButtonClick: (
         e: React.MouseEvent<HTMLButtonElement, MouseEvent>
     ) => void;
+    disabled?: boolean;
 }

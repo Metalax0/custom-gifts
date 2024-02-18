@@ -12,6 +12,7 @@ import { useDispatch } from "react-redux";
 import { setUserDetails } from "../../../state-management/slices/userSlice";
 import { Profile } from "../../pages/profile";
 import { changeTheme } from "../../../utils/themeToggle";
+import { SellerRegister } from "../../pages/seller-register";
 
 export const AppRoutes = () => {
     const dispatch = useDispatch();
@@ -41,10 +42,18 @@ export const AppRoutes = () => {
                         <Route path="/test" element={<TestComponenet />} />
                     </Route>
                     {/* Does not require login for access */}
+                    <Route index element={<Landing />} />
                     <Route path="/register" element={<Register />} />
                     <Route path="/login" element={<Login />} />
-                    <Route index element={<Landing />} />
                     <Route path="*" element={<Error />} />
+                    {/* Seller Routes */}
+                    {/* Only for test, later move into seller only protected route */}
+                    <Route
+                        path="/seller-register"
+                        element={<SellerRegister />}
+                    />
+                    {/* / register */}
+                    {/* / profile */}
                 </Route>
             </Routes>
         </BrowserRouter>

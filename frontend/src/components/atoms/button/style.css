@@ -26,3 +26,8 @@
     background-color: var(--active-color);
     color: var(--bg-color);
 }
+
+.bttn:disabled {
+    cursor: not-allowed;
+    background-color: rgba(239, 239, 239, 0.3);
+}

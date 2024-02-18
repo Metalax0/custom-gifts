@@ -73,7 +73,7 @@ export const Login = () => {
                     <h1>Loading ...</h1>
                 ) : (
                     <>
-                        <h1>Login</h1>
+                        <h2>Login</h2>
                         <div className="form-fields">
                             <FormInputGroup
                                 layout="col"
