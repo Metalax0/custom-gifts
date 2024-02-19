@@ -1,6 +1,8 @@
 import "./style.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SelectionCard } from "../../../molecules/selectionCard";
+import { apiRoutes } from "../../../../api/apiRoutes";
+import { useAPI } from "../../../../hooks/useAPI";
 
 export const SellerRegisterProduct = () => {
     const [selectedProduct, setselectedProduct] = useState({
@@ -8,6 +10,15 @@ export const SellerRegisterProduct = () => {
         cup: false,
         frame: false,
     });
+
+    const productAPI = useAPI();
+
+    useEffect(() => {
+        // getAllproducts
+        productAPI.API("GET", apiRoutes.getAllproducts);
+    }, []);
+
+    console.log("RESSS", productAPI.data, productAPI.error);
 
     return (
         <div className="seller-register-product">

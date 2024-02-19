@@ -8,7 +8,7 @@ export const TestComponenet = () => {
     console.log("TEST", testAPI.data, testAPI.error);
 
     const handleClick = () => {
-        testAPI.API("GET", apiRoutes.test);
+        // testAPI.API("GET", apiRoutes.test);
     };
 
     return (

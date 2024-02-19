@@ -18,7 +18,7 @@ class ProductView(GenericAPIView):
         try:
             serializer=self.serializer_class(product,many=True)
 
-            return Response({"data":serializer.data},status=status.HTTP_200_OK)
+            return Response(serializer.data,status=status.HTTP_200_OK)
         except serializers.ValidationError as e:
             print(e.detail)
             return Response({'msg': 'Validation error', 'errors': e.detail}, status=status.HTTP_400_BAD_REQUEST)

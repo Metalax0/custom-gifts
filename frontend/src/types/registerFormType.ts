@@ -3,5 +3,5 @@ export interface RegisterFormType {
     email: string;
     password: string;
     confirm_password: string;
-    // rememberMe: boolean;
+    isRegisterSeller: boolean;
 }

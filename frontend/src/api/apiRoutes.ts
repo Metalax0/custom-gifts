@@ -1,5 +1,6 @@
 export const apiRoutes = {
     login: "/account/login",
-    register: "/account/seller.register",
-    test: "products/ppp",
+    registerSeller: "/account/seller.register",
+    registerCustomer: "/account/customer.register",
+    getAllproducts: "/products/ppp",
 };
