@@ -7,6 +7,7 @@ import { RegisterFormType } from "../../../types/registerFormType";
 import { useAPI } from "../../../hooks/useAPI";
 import { apiRoutes } from "../../../api/apiRoutes";
 import { NotificationContext } from "../../../misc/notification-provider";
+import { FormCheckboxGroup } from "../../molecules/formCheckboxGroup";
 
 export const Register = () => {
     const [registerForm, setregisterForm] = useState<RegisterFormType>({
@@ -14,6 +15,7 @@ export const Register = () => {
         email: "",
         password: "",
         confirm_password: "",
+        isRegisterSeller: false,
     });
 
     const registerAPI = useAPI();
@@ -37,10 +39,14 @@ export const Register = () => {
         setregisterForm({ ...registerForm, [e.target.name]: e.target.value });
     };
 
-    const handleButtonClick = (
-        e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-    ) => {
-        registerAPI.API("POST", apiRoutes.register, registerForm);
+    const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setregisterForm({ ...registerForm, [e.target.name]: e.target.checked });
+    };
+
+    const handleButtonClick = () => {
+        registerForm.isRegisterSeller
+            ? registerAPI.API("POST", apiRoutes.registerSeller, registerForm)
+            : registerAPI.API("POST", apiRoutes.registerCustomer, registerForm);
     };
 
     return (
@@ -80,6 +86,11 @@ export const Register = () => {
                                 text="Register"
                                 handleButtonClick={handleButtonClick}
                                 type="primary"
+                            />
+                            <FormCheckboxGroup
+                                layout="row"
+                                type="isRegisterSeller"
+                                handleCheckboxChange={handleCheckboxChange}
                             />
                             <p className="flex-row gap-10">
                                 <label>Already have an account?</label>
