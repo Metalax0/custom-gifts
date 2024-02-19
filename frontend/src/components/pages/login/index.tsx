@@ -38,8 +38,8 @@ export const Login = () => {
                 name: loginAPI.data.userInfo.name,
             };
             if (loginForm.rememberMe)
-                setCookie("userInfo", JSON.stringify(data));
-            setCookie("token", loginAPI.data.tokens.access);
+                setCookie("userInfo", JSON.stringify(data), { expires: 7 });
+            setCookie("token", loginAPI.data.tokens.access, { expires: 7 });
             dispatch(setUserDetails(data) as any);
             dispatch(setCredentials(loginAPI.data.tokens.access) as any);
             navigate("/");

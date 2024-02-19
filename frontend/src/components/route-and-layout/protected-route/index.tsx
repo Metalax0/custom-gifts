@@ -1,8 +1,10 @@
 import { Outlet, Navigate } from "react-router-dom";
-import { useIsLoggedIn } from "../../../hooks/useIsLoggedIn";
+import { getCookie } from "typescript-cookie";
 
 const ProtectedRoute = () => {
-    const isLoggedIn = useIsLoggedIn();
+    let isLoggedIn = false;
+    const cookieUserInfo = getCookie("userInfo");
+    if (cookieUserInfo) isLoggedIn = true;
     return isLoggedIn ? <Outlet /> : <Navigate to="/login" />;
 };
 
