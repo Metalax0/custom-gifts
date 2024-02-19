@@ -65,6 +65,13 @@ class UserLoginView(GenericAPIView):
                 password=serializer.validated_data.get('password')
 
                 user=authenticate(email=email,password=password)
+                print(user)
+                if user.is_seller==True:
+                    user_type="is_seller"
+                
+                if user.is_customer==True:
+                    user_type="is_customer"
+
                 if user is not None:
                     tokens=get_tokens_for_user(user)
 
@@ -74,6 +81,7 @@ class UserLoginView(GenericAPIView):
                         "userInfo":{
                             'id':user.id,
                             'name':user.name,
+                            'user_type':user_type
                         }
                         },status=status.HTTP_200_OK)
                 else:
