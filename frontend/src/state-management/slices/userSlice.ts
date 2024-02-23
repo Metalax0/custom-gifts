@@ -8,6 +8,7 @@ import { userSliceState } from "../../types/store/userSliceType";
 const initialState: userSliceState = {
     id: "",
     name: "",
+    user_type: "",
 };
 
 const userOptions: CreateSliceOptions = {
@@ -19,13 +20,15 @@ const userOptions: CreateSliceOptions = {
             action: PayloadAction<{
                 id: string;
                 name: string;
+                user_type: string;
             }>
         ) => {
-            const { id, name } = action.payload;
+            const { id, name, user_type } = action.payload;
             return {
                 ...state,
                 id,
                 name,
+                user_type,
             };
         },
 
@@ -33,6 +36,7 @@ const userOptions: CreateSliceOptions = {
             return {
                 id: "",
                 name: "",
+                user_type: "",
             };
         },
     },

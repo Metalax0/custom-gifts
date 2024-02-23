@@ -1,14 +1,26 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "../../atoms/button";
 import "./style.css";
 import { SellerRegisterProduct } from "./Product";
 import { SellerRegisterCustomization } from "./Customization";
+import { apiRoutes } from "../../../api/apiRoutes";
+import { useAPI } from "../../../hooks/useAPI";
 
 export const SellerRegister = () => {
     const [sectionPage, setsectionPage] = useState(0);
+    const [selectedProducts, setselectedProducts] = useState<string[]>([]);
+    const productAPI = useAPI();
 
     const handlePageChange = (newPage: number) => {
         setsectionPage(newPage);
+        console.log(selectedProducts);
+        if (newPage === 1 && selectedProducts.length !== 0) {
+            productAPI.API(
+                "POST",
+                apiRoutes.setSellerProducts,
+                selectedProducts
+            );
+        }
     };
 
     return (
@@ -18,7 +30,7 @@ export const SellerRegister = () => {
             </h3>
 
             {sectionPage === 0 ? (
-                <SellerRegisterProduct />
+                <SellerRegisterProduct setState={setselectedProducts} />
             ) : (
                 <SellerRegisterCustomization />
             )}
@@ -28,13 +40,13 @@ export const SellerRegister = () => {
                     disabled={sectionPage ? false : true}
                     text="Prev"
                     handleButtonClick={() => handlePageChange(sectionPage - 1)}
-                    type={"primary"}
+                    type="primary"
                 />
                 <Button
                     disabled={sectionPage === 3 ? true : false}
                     text="Next"
                     handleButtonClick={() => handlePageChange(sectionPage + 1)}
-                    type={"primary"}
+                    type="primary"
                 />
             </div>
         </div>

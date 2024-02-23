@@ -4,3 +4,8 @@
     flex-wrap: wrap;
     gap: 30px;
 }
+
+.seller-register-invalid-product {
+    box-sizing: border-box;
+    padding: 100px;
+}

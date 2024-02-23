@@ -1,11 +1,5 @@
+import { SelectionCardPropsType } from "../../../types/selectionCardType";
 import "./style.css";
-
-export interface SelectionCardPropsType {
-    title: string;
-    img: string;
-    isActive: "cardSelected" | null;
-    onClick: () => void;
-}
 
 export const SelectionCard = ({
     title,

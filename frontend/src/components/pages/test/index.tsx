@@ -5,7 +5,7 @@ import "./style.css";
 export const TestComponenet = () => {
     const testAPI = useAPI();
 
-    console.log("TEST", testAPI.data, testAPI.error);
+    // console.log("TEST", testAPI.data, testAPI.error);
 
     const handleClick = () => {
         // testAPI.API("GET", apiRoutes.test);

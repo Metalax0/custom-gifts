@@ -36,6 +36,7 @@ export const Login = () => {
             const data = {
                 id: loginAPI.data.userInfo.id,
                 name: loginAPI.data.userInfo.name,
+                user_type: loginAPI.data.userInfo.user_type,
             };
             if (loginForm.rememberMe)
                 setCookie("userInfo", JSON.stringify(data), { expires: 7 });

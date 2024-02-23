@@ -22,13 +22,13 @@ export const Products = () => {
 
     const cups = {
         title: "Cups",
-        imgArr: ["images/cup.jpeg", "images/cup-2.jpg", "images/cup-3.jpg"],
+        imgArr: ["images/mug.jpg", "images/cup-2.jpg", "images/cup-3.jpg"],
     };
 
     const decals = {
         title: "Decals",
         imgArr: [
-            "images/decal.jpg",
+            "images/decals.jpg",
             "images/decal-2.jpg",
             "images/decal-3.jpg",
         ],
@@ -41,7 +41,7 @@ export const Products = () => {
                 <ProductCard title={tshirt.title} imgArr={tshirt.imgArr} />
                 <ProductCard title={cups.title} imgArr={cups.imgArr} />
                 <ProductCard title={frame.title} imgArr={frame.imgArr} />
-                {/* <ProductCard title={decals.title} imgArr={cups.imgArr} /> */}
+                <ProductCard title={decals.title} imgArr={decals.imgArr} />
             </div>
         </div>
     );

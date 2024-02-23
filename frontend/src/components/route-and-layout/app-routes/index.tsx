@@ -13,6 +13,7 @@ import { setUserDetails } from "../../../state-management/slices/userSlice";
 import { Profile } from "../../pages/profile";
 import { changeTheme } from "../../../utils/themeToggle";
 import { SellerRegister } from "../../pages/seller-register";
+import ProtectedSellerRoute from "../protected-seller-route";
 
 export const AppRoutes = () => {
     const dispatch = useDispatch();
@@ -36,24 +37,23 @@ export const AppRoutes = () => {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Layout />}>
-                    {/* Requires login for access */}
+                    {/* Requires any (customer, seller) login for access */}
                     <Route element={<ProtectedRoute />}>
                         <Route path="/profile" element={<Profile />} />
                         <Route path="/test" element={<TestComponenet />} />
+                    </Route>
+                    {/* Requires seller login for access */}
+                    <Route element={<ProtectedSellerRoute />}>
+                        <Route
+                            path="/seller-register"
+                            element={<SellerRegister />}
+                        />
                     </Route>
                     {/* Does not require login for access */}
                     <Route index element={<Landing />} />
                     <Route path="/register" element={<Register />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="*" element={<Error />} />
-                    {/* Seller Routes */}
-                    {/* Only for test, later move into seller only protected route */}
-                    <Route
-                        path="/seller-register"
-                        element={<SellerRegister />}
-                    />
-                    {/* / register */}
-                    {/* / profile */}
                 </Route>
             </Routes>
         </BrowserRouter>
