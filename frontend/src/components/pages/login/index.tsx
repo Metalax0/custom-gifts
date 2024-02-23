@@ -12,6 +12,7 @@ import { NotificationContext } from "../../../misc/notification-provider";
 import { useDispatch } from "react-redux";
 import { setUserDetails } from "../../../state-management/slices/userSlice";
 import { setCredentials } from "../../../state-management/slices/authSlice";
+import { logout } from "../../../utils/logout";
 
 export const Login = () => {
     const [loginForm, setloginForm] = useState<LoginFormType>({
@@ -23,6 +24,11 @@ export const Login = () => {
     const navigate = useNavigate();
     const { openNotification } = useContext(NotificationContext);
     const dispatch = useDispatch();
+
+    // resets everythign when on this page
+    useEffect(() => {
+        logout(dispatch, navigate);
+    }, []);
 
     // Handles API success and failure cases
     useEffect(() => {

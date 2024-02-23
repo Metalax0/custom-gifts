@@ -8,6 +8,8 @@ import { useAPI } from "../../../hooks/useAPI";
 import { apiRoutes } from "../../../api/apiRoutes";
 import { NotificationContext } from "../../../misc/notification-provider";
 import { FormCheckboxGroup } from "../../molecules/formCheckboxGroup";
+import { logout } from "../../../utils/logout";
+import { useDispatch } from "react-redux";
 
 export const Register = () => {
     const [registerForm, setregisterForm] = useState<RegisterFormType>({
@@ -19,8 +21,14 @@ export const Register = () => {
     });
 
     const registerAPI = useAPI();
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const { openNotification } = useContext(NotificationContext);
+
+    // resets everythign when on this page
+    useEffect(() => {
+        logout(dispatch, navigate);
+    }, []);
 
     // Handles API success and failure cases
     useEffect(() => {
