@@ -24,13 +24,13 @@ export const SellerRegisterProduct = ({
     // is called whenever seller's product selection changes
     useEffect(() => {
         if (productAPI.data) {
-            const productData: string[] = productAPI.data
+            const productData: number[] = productAPI.data
                 .map((item: ProductItemType) =>
                     selectedProduct[item.product_name as keyof ProductType]
-                        ? item.product_id.toString()
+                        ? item.product_id
                         : null
                 )
-                .filter((id: string) => id !== null);
+                .filter((id: number) => id !== null);
             setState(productData);
         }
     }, [selectedProduct]);
