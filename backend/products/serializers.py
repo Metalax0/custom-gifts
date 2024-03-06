@@ -19,3 +19,8 @@ class ProductBySellerSerializer(serializers.Serializer):
         for product_id in product_ids:
             seller_products.append(SellerProduct.objects.create(user_id=user_id, product_id=product_id))
         return seller_products
+
+class SellerProductSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=SellerProduct
+        fields='__all__'

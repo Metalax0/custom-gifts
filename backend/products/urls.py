@@ -4,6 +4,6 @@ from products.views import ProductView,SellerProductSelectView
 
 urlpatterns = [
     path('ppp',ProductView.as_view(),name='product'),
-    path('sp',SellerProductSelectView.as_view(),name='sellerproduct'),
-
+    path('sp/<uuid:user_id>/',SellerProductSelectView.as_view(),name='get-seller-products'),
+    path('sp/', SellerProductSelectView.as_view(), name='add-seller-products'),
 ]
