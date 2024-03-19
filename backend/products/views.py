@@ -24,7 +24,7 @@ class ProductView(GenericAPIView):
             return Response({'msg': 'Validation error', 'errors': e.detail}, status=status.HTTP_400_BAD_REQUEST)
 
 #seller's products CRUD
-class SellerProductSelectView(GenericAPIView):
+class GetSellerProductView(GenericAPIView):
     permission_classes=(IsSeller,)
     serializer_class=ProductBySellerSerializer
     def get(self,request,user_id):
@@ -40,6 +40,9 @@ class SellerProductSelectView(GenericAPIView):
             print(e.detail)
             return Response({'msg': 'Validation error', 'errors': e.detail}, status=status.HTTP_400_BAD_REQUEST)
 
+class AddSellerProductView(GenericAPIView):
+    permission_classes=(IsSeller,)
+    serializer_class=ProductBySellerSerializer
     def post(self,request):
         # print(request.user.id)
         try:
@@ -64,6 +67,7 @@ class SellerProductSelectView(GenericAPIView):
             print(e.detail)
             return Response({'msg': 'Validation error', 'errors': e.detail}, status=status.HTTP_400_BAD_REQUEST)
     
+class DeleteSelectProductView(GenericAPIView):
     def delete(self,request,product_id):
         try:
             product=SellerProduct.objects.get(product_id=product_id)
